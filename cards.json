@@ -1,0 +1,62 @@
+{
+    "characters": 
+    [
+        {
+            "name": "Thorsten", 
+            "class": "Rogue",  
+            "description": "\"Ha'ru en cigg eller?\"", 
+            "source": "Thorsten", 
+            "atk": 5, 
+            "hp": 5 
+        },   
+        {
+            "name": "Leif GW",  
+            "class": "Wizard", 
+            "description": "Det enda sättet att besegra trollkarlen Leif är att knuffa omkull honom på ryggen.", 
+            "source": null,
+            "atk": 2, 
+            "hp": 15
+        },
+        {
+            "name": "Persbrandt",
+            "class": "Paladin",
+            "description": "\"Enligt legenden fick Persbrandt sin karisma från en pakt med ärkedemonen Mefistofeles.\"",
+            "source": "Historian Dick Harrison",
+            "atk": 8,
+            "hp": 10
+        },
+        {
+            "name": "Manic Mike",
+            "class": "Barbarian",
+            "description": "\"If you don't know what port you're sailing to, how do you know what wind is favourable!\"",
+            "source": "Manic Mike",
+            "atk": 12,
+            "hp": 7          
+        },
+        {
+            "name": "Albin",
+            "class": "Rogue?",
+            "description":"\"Nu håller jag koll på flödestätheten av indier\"",
+            "source": "Albin",
+            "atk": 6,
+            "hp": 4
+        },
+        {
+            "name": "Dr. House",
+            "class": "Cleric",
+            "description": "Det finns få skador Dr. House ej kan läka, och färre piller han inte kan svälja.",
+            "source": null,
+            "atk": 3,
+            "hp": 13
+        }
+    ],
+    "resources":
+    [
+        {"type": "cigg"},
+        {"type": "potion"},
+        {"type": "pengar"}
+    ]
+    
+}
+
+

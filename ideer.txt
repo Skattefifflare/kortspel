@@ -23,3 +23,42 @@ upgradera manastorage
 5 kort i hand
 3 olika korthögar: resurser, fighters, uppgraderingar
 fylla upp till 5 kort varje runda
+
+
+
+{"name": , "class": , "atk": , "hp":}
+
+
+karaktärsbild: 510x370
+
+
+        <div class="market">
+            <img src="assets/market2.png" alt="" style="width: 100%;" draggable="false">
+        </div>
+
+
+Rogues:        Albin,        Thorsten
+Wizards:       Leif GW, 
+Paladins:      Persbrandt,
+Clerics:       Dr. House, 
+Barbarians:    Manic Mike,
+
+
+
+Varje karaktär har en klass.
+Varje klass behöver vissa resurser för att kunna slåss.
+
+Rogue - cigg
+Wizard - whisky
+Paladin - pengar
+Cleric - vicodin
+Barbarian - 
+
+varje karaktär behöver olika många resurser.
+
+
+resurser kan köpas varje runda i marknaden för pengar. Paladins är starka men kräver pengar varje runda.
+man tjänar pengar från att snatta på ICA. 
+
+
+Om en karaktär når tillräckligt många resurser kan de få en unik powerup med en uppgradering.
