@@ -1,0 +1,25 @@
+döda maskinen
+
+kortpile
+olika piles -olika kategorier
+
+
+hand
+
+graveyard
+
+hp
+
+mana -resurs?
+replenish varje runda
+savea mana med kort
+upgradera manastorage
+
+
+
+
+
+10hp var
+5 kort i hand
+3 olika korthögar: resurser, fighters, uppgraderingar
+fylla upp till 5 kort varje runda
