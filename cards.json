@@ -44,7 +44,7 @@
         {
             "name": "Dr. House",
             "class": "Cleric",
-            "description": "Det finns få skador Dr. House ej kan läka, och färre piller han inte kan svälja.",
+            "description": "Det finns få skador Dr. House ej kan läka, och färre piller han ej kan svälja.",
             "source": null,
             "atk": 3,
             "hp": 13
@@ -54,7 +54,9 @@
     [
         {"type": "cigg"},
         {"type": "potion"},
-        {"type": "pengar"}
+        {"type": "pengar"},
+        {"type": "tren"},
+        {"type": "vicodin"}
     ]
     
 }
