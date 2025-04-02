@@ -1,3 +1,6 @@
+import { gsap } from "gsap";
+
+
 const open_tutorial_btn = document.getElementById('open_tutorial');
 const tutorial = document.getElementById('tutorial');
 const close_tutorial_btn = document.getElementById('close_button');
@@ -89,6 +92,7 @@ async function getData() {
                 card_div.appendChild(card_source);
             }
 
+            card_div.addEventListener("click", () => {rotate();})
             document.querySelector(".hand").appendChild(card_div);
         });
     }
@@ -101,4 +105,10 @@ async function getData() {
 function rotateCards(){
     const hand_cards = document.querySelector(".hand").children();
     const num_of_cards = document.querySelector(".hand").childElementCount();
+
+    
+}
+
+function rotate(){
+
 }
