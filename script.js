@@ -1,19 +1,19 @@
-import { gsap } from "gsap";
+
+function bind_tutorial(){
+    const open_tutorial_btn = document.getElementById('open_tutorial');
+    const tutorial = document.getElementById('tutorial');
+    const close_tutorial_btn = document.getElementById('close_button');
+
+    open_tutorial_btn.addEventListener('click', () => {
+        tutorial.style.display = 'block';
+    });
+    close_tutorial_btn.addEventListener('click', () => {
+        tutorial.style.display = 'none';
+    });
+}
 
 
-const open_tutorial_btn = document.getElementById('open_tutorial');
-const tutorial = document.getElementById('tutorial');
-const close_tutorial_btn = document.getElementById('close_button');
-
-open_tutorial_btn.addEventListener('click', () => {
-    tutorial.style.display = 'block';
-});
-close_tutorial_btn.addEventListener('click', () => {
-    tutorial.style.display = 'none';
-});
-
-
-async function getData() {
+async function createCards() {
     try {
         const response = await fetch('cards.json');
         if (!response.ok) throw new Error(`Response status: ${response.status}`);
@@ -22,18 +22,21 @@ async function getData() {
         //console.log(data);
 
         const characters = data.characters;
+
+        index = 0;
         characters.forEach(character => {
             const card_div = document.createElement("div");
-            card_div.style.position = "relative";
-            card_div.style.width = "595px";
-            card_div.style.height = "803px";
+            card_div.style.position = "absolute";
+            card_div.style.width = "100%";
+            card_div.style.height = "100%";
+            card_div.style.verticalAlign = "text-bottom";
 
             const bg_num = Math.floor(Math.random() * 4 + 1);
             const card_bg = document.createElement("img");
             card_bg.src = `assets/bg${bg_num}.jpg`;
-            card_bg.style.width = "85.7%"; // fixa det här till relativt
+            card_bg.style.width = "85.7%"; 
             card_bg.style.position = "absolute";
-            card_bg.style.left = "7.06%"; // dessa med
+            card_bg.style.left = "7.06%"; 
             card_bg.style.top = "10.3%";
 
             card_div.appendChild(card_bg);
@@ -60,20 +63,20 @@ async function getData() {
 
             const card_name = document.createElement("p");
             card_name.innerHTML = `<span style="font-size: 100%;">${character.name}</span> <span style="font-size: 70%;">  ${character.class}</span>`;
-            card_name.style.position = "absolute";
+            card_name.style.position = "relative";
             card_name.style.left = "8%";
             card_name.style.top = "53%";
-            card_name.style.fontSize = "32px";
+            card_name.style.fontSize = "1.2cqw";
             card_name.style.color = "black";
 
             card_div.appendChild(card_name);
 
             const card_desc = document.createElement("p");
             card_desc.innerHTML = character.description;
-            card_desc.style.position = "absolute";
+            card_desc.style.position = "relative";
             card_desc.style.left = "9%";
             card_desc.style.top = "62%";
-            card_desc.style.fontSize = "20px";
+            card_desc.style.fontSize = "0.9cqw";
             card_desc.style.color = "black";
             card_desc.style.width = "80%";
 
@@ -82,18 +85,19 @@ async function getData() {
             if (character.source != null){
                 const card_source = document.createElement("p");
                 card_source.innerHTML = `-${character.source}`;
-                card_source.style.position = "absolute";
+                card_source.style.position = "relative";
                 card_source.style.left = "10.08%";
-                card_source.style.top = "77.21%";
-                card_source.style.fontSize = "16px";
+                card_source.style.top = "80.21%";
+                card_source.style.fontSize = "0.7cqw";
                 card_source.style.color = "black";
-                card_source.style.width = "30%";
+                card_source.style.width = "80%";
 
                 card_div.appendChild(card_source);
             }
-
-            card_div.addEventListener("click", () => {rotate();})
-            document.querySelector(".hand").appendChild(card_div);
+            card_div.id = index;
+            index++;
+            card_div.addEventListener("click", () => {rotate(card_div);})
+            document.querySelector(".draw_stack").appendChild(card_div);
         });
     }
     catch (error){
@@ -105,10 +109,20 @@ async function getData() {
 function rotateCards(){
     const hand_cards = document.querySelector(".hand").children();
     const num_of_cards = document.querySelector(".hand").childElementCount();
-
-    
 }
 
-function rotate(){
-
+function rotate(id){
+    console.log(id);
+    gsap.to(id, {
+        rotate: 360, 
+        duration: .8,
+        onComplete: () => {
+            gsap.to(id, {duration: 1, x: 1500});
+        }
+    });
 }
+function play_card(card_id){
+    gsap.to(id, {duration: 1, x: 100});
+}
+
+document.addEventListener("DOMContentLoaded", () => {createCards(); bind_tutorial();});
