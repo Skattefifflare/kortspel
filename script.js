@@ -31,6 +31,9 @@ async function createCards() {
             card_div.style.height = "100%";
             card_div.style.verticalAlign = "text-bottom";
 
+            document.querySelector(".draw_stack").appendChild(card_div);
+            const width = parseFloat(window.getComputedStyle(card_div).width);
+
             const bg_num = Math.floor(Math.random() * 4 + 1);
             const card_bg = document.createElement("img");
             card_bg.src = `assets/bg${bg_num}.jpg`;
@@ -63,20 +66,20 @@ async function createCards() {
 
             const card_name = document.createElement("p");
             card_name.innerHTML = `<span style="font-size: 100%;">${character.name}</span> <span style="font-size: 70%;">  ${character.class}</span>`;
-            card_name.style.position = "relative";
+            card_name.style.position = "absolute";
             card_name.style.left = "8%";
             card_name.style.top = "53%";
-            card_name.style.fontSize = "1.2cqw";
+            card_name.style.fontSize = `${width / 18}px`;
             card_name.style.color = "black";
 
             card_div.appendChild(card_name);
 
             const card_desc = document.createElement("p");
             card_desc.innerHTML = character.description;
-            card_desc.style.position = "relative";
+            card_desc.style.position = "absolute";
             card_desc.style.left = "9%";
-            card_desc.style.top = "62%";
-            card_desc.style.fontSize = "0.9cqw";
+            card_desc.style.top = "61%";
+            card_desc.style.fontSize = `${width / 27}px`;
             card_desc.style.color = "black";
             card_desc.style.width = "80%";
 
@@ -85,10 +88,10 @@ async function createCards() {
             if (character.source != null){
                 const card_source = document.createElement("p");
                 card_source.innerHTML = `-${character.source}`;
-                card_source.style.position = "relative";
+                card_source.style.position = "absolute";
                 card_source.style.left = "10.08%";
                 card_source.style.top = "80.21%";
-                card_source.style.fontSize = "0.7cqw";
+                card_source.style.fontSize = `${width / 34}px`;
                 card_source.style.color = "black";
                 card_source.style.width = "80%";
 
@@ -97,7 +100,6 @@ async function createCards() {
             card_div.id = index;
             index++;
             card_div.addEventListener("click", () => {rotate(card_div);})
-            document.querySelector(".draw_stack").appendChild(card_div);
         });
     }
     catch (error){
@@ -126,3 +128,9 @@ function play_card(card_id){
 }
 
 document.addEventListener("DOMContentLoaded", () => {createCards(); bind_tutorial();});
+
+
+
+function create_hand(){
+    
+}

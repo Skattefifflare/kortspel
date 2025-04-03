@@ -3,8 +3,6 @@ body {
     font-family: "pixelfont";
     color:rgb(204, 208, 235);
 }
-
-
 header {
     font-family: "pixelfont";
     color: white;
@@ -70,6 +68,11 @@ img {
 }
 #close_button:hover {
     color: rgb(150, 26, 26);
+}
+
+
+.hand {
+    
 }
   
 
