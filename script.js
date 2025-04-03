@@ -107,12 +107,6 @@ async function createCards() {
     }
 }
 
-
-function rotateCards(){
-    const hand_cards = document.querySelector(".hand").children();
-    const num_of_cards = document.querySelector(".hand").childElementCount();
-}
-
 function rotate(id){
     console.log(id);
     gsap.to(id, {
@@ -123,14 +117,39 @@ function rotate(id){
         }
     });
 }
-function play_card(card_id){
-    gsap.to(id, {duration: 1, x: 100});
-}
 
-document.addEventListener("DOMContentLoaded", () => {createCards(); bind_tutorial();});
+document.addEventListener("DOMContentLoaded", () => {createCards(); bind_tutorial(); rotate_hand();});
 
-
-
-function create_hand(){
+function rotate_hand(){
+    const min_angle = -40;
+    const max_angle = 40;
+    const tot_angle = Math.abs(min_angle + max_angle);
+    const is_even = (document.getElementById("draw_stack").childElementCount % 2 == 0) ? true : false;
+    let draw_stack = [];    
+    draw_stack = Array.from(document.getElementById("draw_stack").children);
+    const card_num = draw_stack.length;
     
+    const add_angle = tot_angle / (card_num-1);
+    
+    const current_angle = min_angle;
+    if (is_even)  {
+        const i = 0;
+        draw_stack.forEach(card => {
+            let past_half = (i >= card_num / 2) ? true : false; 
+            gsap.to(card, {
+                rotate: add_angle * i + (past_half ? add_angle : 0),
+                x: i * 100,
+            })
+            i++;
+        });
+    }
+    else {
+        const i = 0;
+        draw_stack.forEach(card => {
+            gsap.to(card, {
+                rotate: add_angle * i,
+                x: i * 100,
+            });
+        });
+    }
 }
