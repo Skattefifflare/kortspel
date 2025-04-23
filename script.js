@@ -26,12 +26,13 @@ async function createCards() {
         index = 0;
         characters.forEach(character => {
             const card_div = document.createElement("div");
-            card_div.style.position = "absolute";
+            card_div.style.position = "relative";
             card_div.style.width = "100%";
             card_div.style.height = "100%";
             card_div.style.verticalAlign = "text-bottom";
+            card_div.style.gridArea = "1 / 1";
 
-            document.querySelector(".draw_stack").appendChild(card_div);
+            document.querySelector(".hand").appendChild(card_div);
             const width = parseFloat(window.getComputedStyle(card_div).width);
 
             const bg_num = Math.floor(Math.random() * 4 + 1);
@@ -105,8 +106,8 @@ async function createCards() {
     catch (error){
         console.error(error.message)
     }
+    new_card_spread();
 }
-
 function rotate(id){
     console.log(id);
     gsap.to(id, {
@@ -117,39 +118,27 @@ function rotate(id){
         }
     });
 }
+function new_card_spread(){
+    let hand = [];
+    hand = Array.from(document.getElementById("hand").children);
 
-document.addEventListener("DOMContentLoaded", () => {createCards(); bind_tutorial(); rotate_hand();});
-
-function rotate_hand(){
-    const min_angle = -40;
-    const max_angle = 40;
-    const tot_angle = Math.abs(min_angle + max_angle);
-    const is_even = (document.getElementById("draw_stack").childElementCount % 2 == 0) ? true : false;
-    let draw_stack = [];    
-    draw_stack = Array.from(document.getElementById("draw_stack").children);
-    const card_num = draw_stack.length;
-    
-    const add_angle = tot_angle / (card_num-1);
-    
-    const current_angle = min_angle;
-    if (is_even)  {
-        const i = 0;
-        draw_stack.forEach(card => {
-            let past_half = (i >= card_num / 2) ? true : false; 
-            gsap.to(card, {
-                rotate: add_angle * i + (past_half ? add_angle : 0),
-                x: i * 100,
-            })
-            i++;
+    hand.forEach(card =>  {
+            
+        gsap.to(card, {
+            rotate: 0-hand.indexOf(card) * 14, duration: 0,transformOrigin: "center bottom",   
+            x: hand.indexOf(card) * -1, duration:0,
+            y: hand.indexOf(card) * 0,//Math.abs(hand.indexOf(card) - ((hand.length/2) - 1)) * -10, duration: 0       
         });
-    }
-    else {
-        const i = 0;
-        draw_stack.forEach(card => {
-            gsap.to(card, {
-                rotate: add_angle * i,
-                x: i * 100,
-            });
-        });
-    }
+    });
 }
+
+function order_z(){
+    let hand = [];
+    hand = Array.from(document.getElementById("hand").children);
+
+
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {createCards(); bind_tutorial();});
