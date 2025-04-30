@@ -19,8 +19,6 @@ async function createCards() {
         if (!response.ok) throw new Error(`Response status: ${response.status}`);
 
         const data = await response.json();
-        //console.log(data);
-
         const characters = data.characters;
 
         index = 0;
@@ -61,8 +59,6 @@ async function createCards() {
             card_frame.style.position = "absolute";
             card_frame.style.left = "0px";
             card_frame.style.top = "0px";
-            //card_frame.style.zIndex = 100;
-
             card_div.appendChild(card_frame);
 
             const card_name = document.createElement("p");
@@ -137,6 +133,10 @@ function order_z(){
     hand = Array.from(document.getElementById("hand").children);
 
 
+}
+
+function inspect_card(){
+    
 }
 
 
