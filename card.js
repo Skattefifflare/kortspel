@@ -1,13 +1,13 @@
 class Card {
-
-
-
+    
     constructor(index, {name, cardclass, desc, source, atk, hp}){
         this.index = index;
         this.data = {name, cardclass, desc, source, atk, hp};
     }
 
     create_card_element() {
+        const width = 192;
+
         const card_div = Object.assign(document.createElement("div"), {
             style: Object.assign(document.createElement("div").style, {
                 position      : "relative",
@@ -80,6 +80,7 @@ class Card {
                 })
             });
         }
+        return card_div;
     }
 }
 
